@@ -16,7 +16,7 @@
 'use strict';
 
 const {Http2ServerResponse} = require('http2');
-const HttpResponse = require('fifit-server-http/response');
+const {Response: HttpResponse} = require('fifit-server-http');
 const ObjectAssigner = require('ganiyem-util-objectassigner');
 
 /**

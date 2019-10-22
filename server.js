@@ -16,7 +16,7 @@
 'use strict';
 
 const http2 = require('http2');
-const HttpServer = require('fifit-server-http');
+const {Server: HttpServer} = require('fifit-server-http');
 const Request = require('./request');
 const Response = require('./response');
 

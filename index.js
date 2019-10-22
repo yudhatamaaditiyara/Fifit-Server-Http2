@@ -18,4 +18,7 @@
 /**
  * @+
  */
-module.exports = require('./server');
+module.exports = {};
+module.exports.Server = require('./server');
+module.exports.Request = require('./request');
+module.exports.Response = require('./response');
