@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "fifit-server-http": "0.0.6",
-    "ganiyem-util-objectassigner": "1.1.2"
+    "ganiyem-util-objectassigner": "1.1.3"
   },
   "devDependencies": {
     "coveralls": "3.0.7",
