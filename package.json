@@ -8,7 +8,7 @@
     "url": "git+https://github.com/yudhatamaaditiyara/Fifit-Server-Http2.git"
   },
   "dependencies": {
-    "fifit-server-http": "^0.0.8",
+    "fifit-server-http": "^0.0.9",
     "ganiyem-util-objectassigner": "^1.1.4"
   },
   "devDependencies": {
