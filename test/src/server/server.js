@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 const assert = require('assert');
-const http2 = require('http2');
 const helper = require('../../helper');
 const config = require('../../helper/config');
 
