@@ -24,10 +24,10 @@ describe('Request#origin', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port);
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port);
         server.stop().then(done);
       });
     });
@@ -40,9 +40,9 @@ describe('Request#origin', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port);
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port);
         server.stop().then(done);
       });
     });
@@ -55,10 +55,10 @@ describe('Request#origin', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'https://' + server.options.host + ':' + server.options.port);
+        assert.strictEqual(buffer, 'https://' + server.config.host + ':' + server.config.port);
         server.stop().then(done);
       });
     });
@@ -71,9 +71,9 @@ describe('Request#origin', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'https://' + server.options.host + ':' + server.options.port);
+        assert.strictEqual(buffer, 'https://' + server.config.host + ':' + server.config.port);
         server.stop().then(done);
       });
     });

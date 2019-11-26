@@ -24,8 +24,8 @@ describe('Request#isSecure', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'true');
         server.stop().then(done);
@@ -40,8 +40,8 @@ describe('Request#isSecure', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'false');
         server.stop().then(done);

@@ -25,8 +25,8 @@ describe('Request#parsedUrl', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
         assert.strictEqual(buffer, '/');
         server.stop().then(done);
@@ -41,8 +41,8 @@ describe('Request#parsedUrl', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: '/path?query=value'
       }).then(({buffer}) => {
         assert.strictEqual(buffer, '/path?query=value');
@@ -58,8 +58,8 @@ describe('Request#parsedUrl', () => {
     });
     server.start().then(() => {
       helper.createHttpSecureRequest({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: 'http://hostname/'
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'http://hostname/');
@@ -75,8 +75,8 @@ describe('Request#parsedUrl', () => {
     });
     server.start().then(() => {
       helper.createHttpSecureRequest({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: 'http://hostname/path?query=value'
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'http://hostname/path?query=value');

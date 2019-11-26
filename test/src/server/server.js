@@ -19,14 +19,14 @@ const helper = require('../../helper');
 const config = require('../../helper/config');
 
 describe('Server', () => {
-  it('must be Server#options.host === config.server.host', () => {
+  it('must be Server#config.host === config.server.host', () => {
     let server = helper.createServer();
-    assert.strictEqual(server.options.host, config.server.host);
+    assert.strictEqual(server.config.host, config.server.host);
   });
 
-  it('must be Server#options.port === config.server.port', () => {
+  it('must be Server#config.port === config.server.port', () => {
     let server = helper.createServer();
-    assert.strictEqual(server.options.port, config.server.port);
+    assert.strictEqual(server.config.port, config.server.port);
   });
 
   it('must be Server#resource instanceof http2.Server', () => {
@@ -46,10 +46,10 @@ describe('Server', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port + '/');
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -62,9 +62,9 @@ describe('Server', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port + '/');
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -76,12 +76,12 @@ describe('Server', () => {
       response.end(request.href);
     });
     server.start().then(() => {
-      /* todo: "[" + server.options.host + "]" */
+      /* todo: "[" + server.config.host + "]" */
       helper.createHttp2Request({
         host: '127.0.0.1',
-        port: server.options.port
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://127.0.0.1:' + server.options.port + '/');
+        assert.strictEqual(buffer, 'http://127.0.0.1:' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -93,11 +93,11 @@ describe('Server', () => {
       response.end(request.href);
     });
     server.start().then(() => {
-      /* todo: "[" + server.options.host + "]" */
+      /* todo: "[" + server.config.host + "]" */
       helper.createHttp2Request({
         host: '127.0.0.1',
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://127.0.0.1:' + server.options.port + '/');
+        assert.strictEqual(buffer, 'http://127.0.0.1:' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -110,10 +110,10 @@ describe('Server', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'https://' + server.options.host + ':' + server.options.port + '/');
+        assert.strictEqual(buffer, 'https://' + server.config.host + ':' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -126,9 +126,9 @@ describe('Server', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'https://' + server.options.host + ':' + server.options.port + '/');
+        assert.strictEqual(buffer, 'https://' + server.config.host + ':' + server.config.port + '/');
         server.stop().then(done);
       });
     });

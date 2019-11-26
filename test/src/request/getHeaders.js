@@ -24,8 +24,8 @@ describe('Request#getHeaders', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         headers: {
           'X-Fifit': 'Fithrotun Nisa'
         }
@@ -43,8 +43,8 @@ describe('Request#getHeaders', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         headers: {
           'X-Fifit': 'Fithrotun Nisa'
         }

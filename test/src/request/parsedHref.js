@@ -25,10 +25,10 @@ describe('Request#parsedHref', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port + '/');
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port + '/');
         server.stop().then(done);
       });
     });
@@ -41,11 +41,11 @@ describe('Request#parsedHref', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: '/path?query=value'
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, 'http://' + server.options.host + ':' + server.options.port + '/path?query=value');
+        assert.strictEqual(buffer, 'http://' + server.config.host + ':' + server.config.port + '/path?query=value');
         server.stop().then(done);
       });
     });
@@ -58,8 +58,8 @@ describe('Request#parsedHref', () => {
     });
     server.start().then(() => {
       helper.createHttpSecureRequest({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: 'http://hostname/'
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'http://hostname/');
@@ -75,8 +75,8 @@ describe('Request#parsedHref', () => {
     });
     server.start().then(() => {
       helper.createHttpSecureRequest({
-        host: server.options.host,
-        port: server.options.port,
+        host: server.config.host,
+        port: server.config.port,
         path: 'http://hostname/path?query=value'
       }).then(({buffer}) => {
         assert.strictEqual(buffer, 'http://hostname/path?query=value');

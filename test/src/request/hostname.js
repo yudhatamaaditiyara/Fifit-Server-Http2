@@ -24,10 +24,10 @@ describe('Request#hostname', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, server.options.host);
+        assert.strictEqual(buffer, server.config.host);
         server.stop().then(done);
       });
     });
@@ -40,9 +40,9 @@ describe('Request#hostname', () => {
     });
     server.start().then(() => {
       helper.createHttp2Request({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, server.options.host);
+        assert.strictEqual(buffer, server.config.host);
         server.stop().then(done);
       });
     });
@@ -54,10 +54,10 @@ describe('Request#hostname', () => {
       response.end(request.hostname);
     });
     server.start().then(() => {
-      /* todo: "[" + server.options.host + "]" */
+      /* todo: "[" + server.config.host + "]" */
       helper.createHttp2Request({
         host: '127.0.0.1',
-        port: server.options.port
+        port: server.config.port
       }).then(({buffer}) => {
         assert.strictEqual(buffer, '127.0.0.1');
         server.stop().then(done);
@@ -71,7 +71,7 @@ describe('Request#hostname', () => {
       response.end(request.hostname);
     });
     server.start().then(() => {
-      /* todo: "[" + server.options.host + "]" */
+      /* todo: "[" + server.config.host + "]" */
       helper.createHttp2Request({
         host: '127.0.0.1'
       }).then(({buffer}) => {
@@ -88,10 +88,10 @@ describe('Request#hostname', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host,
-        port: server.options.port
+        host: server.config.host,
+        port: server.config.port
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, server.options.host);
+        assert.strictEqual(buffer, server.config.host);
         server.stop().then(done);
       });
     });
@@ -104,9 +104,9 @@ describe('Request#hostname', () => {
     });
     server.start().then(() => {
       helper.createHttp2SecureRequest({
-        host: server.options.host
+        host: server.config.host
       }).then(({buffer}) => {
-        assert.strictEqual(buffer, server.options.host);
+        assert.strictEqual(buffer, server.config.host);
         server.stop().then(done);
       });
     });

@@ -25,7 +25,7 @@ const {Server} = require('../../');
  */
 class SecureServer extends Server{
   _createServerOptions(){
-    return Object.assign({}, this.options.options, super._createServerOptions());
+    return Object.assign({}, this.config.options, super._createServerOptions());
   }
   _createServerResource(){
     return http2.createSecureServer(this._createServerOptions());
